@@ -158,5 +158,6 @@ input:hover {
   background: #1a1a1ad2;
   position: fixed;
   top: 0;
+  z-index: 100;
   left: 0;
 }

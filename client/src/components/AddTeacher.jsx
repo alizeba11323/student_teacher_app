@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-function AddTeacher({ title, btnHandler, teacher: newTecaher }) {
+function AddTeacher({
+  title,
+  btnHandler,
+  teacher: newTecaher,
+  setRefresh,
+  setShow,
+}) {
   const [teacher, setTeacher] = useState({
     name: "",
     email: "",
@@ -19,6 +25,7 @@ function AddTeacher({ title, btnHandler, teacher: newTecaher }) {
   };
   const handleSave = () => {
     btnHandler(teacher);
+    setRefresh((prev) => !prev);
   };
   return (
     <div className="overlay">
@@ -98,8 +105,10 @@ function AddTeacher({ title, btnHandler, teacher: newTecaher }) {
             male
           </label>
         </div>
-
-        <button onClick={handleSave}>Add Teacher</button>
+        <div style={{ display: "flex", gap: "10px" }}>
+          <button onClick={() => setShow((prev) => !prev)}>Back</button>
+          <button onClick={handleSave}>{title}</button>
+        </div>
       </div>
     </div>
   );

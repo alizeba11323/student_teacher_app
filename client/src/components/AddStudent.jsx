@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function AddStudent({ title, btnHandler, student: new_student }) {
+function AddStudent({ title, btnHandler, student: new_student, setShow }) {
   const [student, setStudent] = useState({
     name: "",
     email: "",
@@ -97,7 +97,10 @@ function AddStudent({ title, btnHandler, student: new_student }) {
             Male
           </label>
         </div>
-        <button onClick={handleSave}>{title}</button>
+        <div style={{ display: "flex", gap: "10px" }}>
+          <button onClick={() => setShow((prev) => !prev)}>Back</button>
+          <button onClick={handleSave}>{title}</button>
+        </div>
       </div>
     </div>
   );

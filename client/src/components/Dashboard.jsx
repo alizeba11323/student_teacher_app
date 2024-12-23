@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
+  const [refresh, setRefresh] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -39,8 +40,8 @@ function Dashboard() {
       </button>
       <h2>Hello {user?.name}, Welcome to Dashboard</h2>
       <div className="dashboard_part">
-        <TecaherDepartment />
-        <StudentDepartment />
+        <TecaherDepartment setRefresh={setRefresh} />
+        <StudentDepartment refresh={refresh} />
       </div>
     </div>
   );

@@ -1,21 +1,14 @@
-import axios from "axios";
 import { Pencil, Trash, UserCheck, UserCog } from "lucide-react";
-import { useEffect, useState } from "react";
-function Student({ student, handleEdit, handleDelete, handleAssignTeacher }) {
+import { useState } from "react";
+function Student({
+  student,
+  handleEdit,
+  handleDelete,
+  handleAssignTeacher,
+  teachers,
+}) {
   const [show, setShow] = useState(false);
-  const [teachers, setTeachers] = useState([]);
   const [teacher, setTeacher] = useState("");
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/teacher", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setTeachers(res.data.teachers);
-      });
-  }, []);
 
   return (
     <div className="t_card">

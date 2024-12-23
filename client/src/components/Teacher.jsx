@@ -4,8 +4,8 @@ function Teacher({ teacher, handleDelete, handleEdit }) {
     <div className="t_card">
       <div>{teacher?.name}</div>
       <div style={{ display: "flex", gap: "10px" }}>
-        <button>
-          <Pencil size={16} onClick={() => handleEdit(teacher)} />
+        <button onClick={() => handleEdit(teacher)}>
+          <Pencil size={16} />
         </button>
         <button onClick={() => handleDelete(teacher?._id)}>
           <Trash size={16} />

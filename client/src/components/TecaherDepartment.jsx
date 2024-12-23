@@ -3,7 +3,7 @@ import AddTeacher from "./AddTeacher";
 import Teacher from "./Teacher";
 import axios from "axios";
 import toast from "react-hot-toast";
-function TecaherDepartment() {
+function TecaherDepartment({ setRefresh }) {
   const [show, setShow] = useState(false);
   const [editedId, setEditedId] = useState(null);
   const [teachers, setTeachers] = useState([]);
@@ -98,9 +98,18 @@ function TecaherDepartment() {
           title={"Edit Teacher"}
           btnHandler={handleUpdate}
           teacher={editedId}
+          setRefresh={setRefresh}
+          setShow={setShow}
         />
       ) : (
-        show && <AddTeacher title={"Add Teacher"} btnHandler={handleSave} />
+        show && (
+          <AddTeacher
+            title={"Add Teacher"}
+            btnHandler={handleSave}
+            setRefresh={setRefresh}
+            setShow={setShow}
+          />
+        )
       )}
       <div className="card">
         <div

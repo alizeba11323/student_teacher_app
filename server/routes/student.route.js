@@ -72,6 +72,8 @@ router.get("/:id", async (req, res) => {
 });
 router.patch("/assign_teacher", async (req, res) => {
   const { teacher_id, student_id } = req.body;
+  if (teacher_id === "")
+    return res.status(400).json({ message: "Please Provide Teacher Id" });
   try {
     const student = await Student.findByIdAndUpdate(
       student_id,
